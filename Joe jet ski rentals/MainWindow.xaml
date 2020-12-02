@@ -1,0 +1,62 @@
+﻿<Window x:Class="Joe_jet_ski_rentals.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Joe_jet_ski_rentals"
+        mc:Ignorable="d"
+        Title="Joe jet ski" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="jet ski" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+        <Label Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Content="life jackets" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+
+        <ListBox Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="5" ItemsSource="{Binding JetSkis}" SelectedItem="{Binding SelectedJetSki}" HorizontalContentAlignment="Stretch">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{Binding Description}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" FontWeight="ExtraBlack" />
+                        <Label Grid.Column="1" Content="{Binding PricePerDay}" ContentStringFormat="C" FontSize="18" FontWeight="ExtraBlack" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <ListBox Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="5" ItemsSource="{Binding LifeJackets}" SelectedItem="{Binding SelectedLifeJacket}" HorizontalContentAlignment="Stretch">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{Binding Description}" FontSize="18" FontWeight="ExtraBlack" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                        <Label Grid.Column="1" Content="{Binding PricePerPerson}" ContentStringFormat="C" FontSize="18" FontWeight="ExtraBlack" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Label Content="Enter number of days" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+        <TextBox Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" Margin="20" Text="{Binding Days}" BorderBrush="Black" BorderThickness="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20"/>
+
+        <Button Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="20" Content="Calculate Bill" Name="Calculate" Click="Calculate_Click" BorderBrush="Black" BorderThickness="3" FontSize="24" FontWeight="ExtraBold"/>
+    </Grid>
+</Window>
